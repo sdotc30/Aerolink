@@ -1,0 +1,29 @@
+/* Reset and base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Your AEROLINK color variables */
+:root {
+  --primary-blue: #0077B6;
+  --sky-blue: #90E0EF;
+  --aqua-blue: #00B4D8;
+  --soft-white: #F6FCFF;
+  --dark-blue: #02429c;
+}
+
+/* Utility classes you can reuse */
+.glass-pane {
+  background-color: rgba(200,225,245,0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+}

@@ -15,28 +15,28 @@ const steps = [
     label: "Step 1",
     title: "Post Your Luggage Need",
     desc: "Create a post with your flight route, travel dates, and specify whether you need extra space or have space to share.",
-    icon: "🧳",
+    iconPath: "/icons/luggage.svg",
   },
   {
     id: 1,
     label: "Step 2",
     title: "Get Matched",
     desc: "Our system finds compatible travelers on the same route who can help with your luggage needs.",
-    icon: "🔄",
+    iconPath: "/icons/handshake.svg",
   },
   {
     id: 2,
     label: "Step 3",
     title: "Connect & Confirm",
     desc: "Chat with matched travelers, verify details, and confirm arrangements before your flight.",
-    icon: "🤝",
+    iconPath: "/icons/tick.svg",
   },
   {
     id: 3,
     label: "Step 4",
     title: "Meet & Transfer",
     desc: "Meet at the airport, safely transfer luggage, and complete your journey worry-free.",
-    icon: "✈️",
+    iconPath: "/icons/airplane.svg",
   },
 ];
 
@@ -55,11 +55,10 @@ export default function HowItWorks() {
         width: "100%",
         py: { xs: 6, md: 8 },
         px: { xs: 2, md: 4 },
-        backgroundColor: "#F6FCFF", // soft background from your palette
+        backgroundColor: "#F6FCFF",
         minHeight: "60vh",
       }}
     >
-      {/* Section Heading */}
       <Typography
         variant="h3"
         sx={{
@@ -73,7 +72,6 @@ export default function HowItWorks() {
         How AEROLINK Works
       </Typography>
 
-      {/* Step Navigation Bar */}
       <Box
         sx={{
           display: "flex",
@@ -118,34 +116,45 @@ export default function HowItWorks() {
                   }}
                 >
                   <Box sx={{ textAlign: "center" }}>
-                    {/* Step Icon */}
-                    <Typography
-                      variant="h4"
+                    {/* SVG Icon */}
+                    <Box
                       sx={{
-                        fontSize: { xs: "1.5rem", sm: "2rem" },
+                        width: { xs: 32, sm: 40 },
+                        height: { xs: 32, sm: 40 },
+                        mx: "auto",
                         mb: 0.5,
-                        filter: isActive ? "none" : "grayscale(50%)",
+                        filter: isActive
+                          ? "none"
+                          : "grayscale(50%) opacity(0.7)",
                         transform: isActive ? "scale(1.1)" : "scale(1)",
                         transition: "all 0.3s ease",
                       }}
                     >
-                      {step.icon}
-                    </Typography>
+                      <img
+                        src={step.iconPath}
+                        alt={step.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          filter: isActive
+                            ? "brightness(0) saturate(100%) invert(25%) sepia(86%) saturate(1629%) hue-rotate(193deg) brightness(93%) contrast(101%)"
+                            : "grayscale(100%) opacity(0.6)",
+                        }}
+                      />
+                    </Box>
 
-                    {/* Step Label */}
                     <Typography
                       variant="overline"
                       sx={{
                         display: "block",
                         letterSpacing: 1.2,
-                        color: isActive ? "#0077B6" : "rgba(0,0,0,0.6)",
+                        color: isActive ? "#0077B6" : "rgba(0, 0, 0, 1)",
                         fontSize: { xs: "0.7rem", sm: "0.8rem" },
                       }}
                     >
                       {step.label}
                     </Typography>
 
-                    {/* Step Title */}
                     <Typography
                       variant="subtitle2"
                       sx={{
@@ -159,7 +168,6 @@ export default function HowItWorks() {
                       {step.title}
                     </Typography>
 
-                    {/* Active Indicator */}
                     <Box
                       sx={{
                         height: 3,
@@ -179,7 +187,6 @@ export default function HowItWorks() {
         </Box>
       </Box>
 
-      {/* Content Pane */}
       <Box
         sx={{
           display: "flex",
@@ -190,7 +197,7 @@ export default function HowItWorks() {
           sx={{
             width: { xs: "100%", sm: "90%", md: "85%" },
             maxWidth: 1000,
-            backgroundColor: "rgba(200,225,245,0.35)", // sky tint from your palette
+            backgroundColor: "rgba(200,225,245,0.35)",
             backdropFilter: "blur(12px)",
             WebkitBackdropFilter: "blur(12px)",
             border: "1px solid rgba(255,255,255,0.25)",
@@ -215,17 +222,25 @@ export default function HowItWorks() {
                     spacing={3}
                     alignItems="center"
                   >
-                    {/* Large Icon */}
                     <Box
                       sx={{
-                        fontSize: { xs: "4rem", sm: "5rem" },
-                        filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.1))",
+                        width: { xs: 80, sm: 100 },
+                        height: { xs: 80, sm: 100 },
                       }}
                     >
-                      {steps[activeStep].icon}
+                      <img
+                        src={steps[activeStep].iconPath}
+                        alt={steps[activeStep].title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          filter:
+                            "brightness(0) saturate(100%) invert(25%) sepia(86%) saturate(1629%) hue-rotate(193deg) brightness(93%) contrast(101%)",
+                          dropShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                        }}
+                      />
                     </Box>
 
-                    {/* Content */}
                     <Box sx={{ flex: 1 }}>
                       <Typography
                         variant="h4"

@@ -6,11 +6,12 @@ const HeroSection = () => {
     <Box
       sx={{
         minHeight: "100vh",
-        maxWidth: "100%",
+        width: "100vw",
+        maxWidth: "100vw",
         backgroundImage: 'url("/images/HeroImage (1).jpg")',
         overflowX: "hidden",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
