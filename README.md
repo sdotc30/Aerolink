@@ -49,46 +49,9 @@ AEROLINK is a full-stack web platform that matches air travellers who need extra
 - **Git/GitHub** - Version control
 - **Heroku** - Cloud deployment (free tier)
 
-## 🎨 **Design System**
-
-### **Color Palette**
---primary-blue: #0077B6 /* Deep blue for CTAs /
---sky-blue: #90E0EF / Soothing primary shade /
---aqua-blue: #00B4D8 / Highlights and accents /
---soft-white: #F6FCFF / Clean backgrounds /
---dark-blue: #02429c / Button colors */
-
-
-### **Key Design Principles**
-- **Sky/Cloud Theme** - Inspired by aviation and travel
-- **Glass Morphism** - Modern frosted glass effects
-- **Responsive First** - Mobile-optimized layouts
-- **Subtle Animations** - Smooth transitions and micro-interactions
-
-## 📁 **Project Structure**
-
-aerolink/
-├── src/
-│ ├── components/
-│ │ ├── Navbar.jsx
-│ │ ├── HeroSection.jsx
-│ │ ├── HowItWorks.jsx
-│ │ └── icons/ # SVG icon components
-│ ├── styles/
-│ │ └── globals.css # Global styles and resets
-│ ├── App.js
-│ └── index.js
-├── public/
-│ ├── images/
-│ │ └── HeroImage.jpg # Main hero background
-│ └── index.html
-├── README.md
-└── package.json
-
-
 ## 🚀 **Getting Started**
 
-### **Prerequisites**
+### **Pre requisites**
 - Node.js (v14 or higher)
 - npm or yarn package manager
 
