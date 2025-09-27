@@ -1,7 +1,10 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom"; // Only new import
 
 const HeroSection = () => {
+  const navigate = useNavigate(); // Only new line
+
   return (
     <Box
       sx={{
@@ -50,8 +53,9 @@ const HeroSection = () => {
       <Button
         variant="contained"
         size="large"
+        onClick={() => navigate("/login")} // Changed: removed href, added onClick
         sx={{
-          backgroundColor: "#02429c",
+          backgroundColor: "#007b6",
           color: "#fff",
           px: 4,
           py: 1.2,
@@ -68,7 +72,6 @@ const HeroSection = () => {
           transition: "all 0.2s cubic-bezier(.4,2,.6,1)",
           fontSize: { xs: "1rem", sm: "1.15rem" },
         }}
-        href="/post-luggage"
       >
         Get Started
       </Button>

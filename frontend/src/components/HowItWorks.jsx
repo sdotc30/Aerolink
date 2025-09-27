@@ -148,7 +148,7 @@ export default function HowItWorks() {
                       sx={{
                         display: "block",
                         letterSpacing: 1.2,
-                        color: isActive ? "#0077B6" : "rgba(0, 0, 0, 1)",
+                        color: isActive ? "#0077B6" : "rgba(0,0,0,0.6)",
                         fontSize: { xs: "0.7rem", sm: "0.8rem" },
                       }}
                     >

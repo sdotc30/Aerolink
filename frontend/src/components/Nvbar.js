@@ -4,8 +4,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom"; // Only new import
 
 function Navbar() {
+  const navigate = useNavigate(); // Only new line
+
   return (
     <AppBar
       position="static"
@@ -38,6 +41,7 @@ function Navbar() {
         <Box>
           <Button
             color="inherit"
+            onClick={() => navigate("/register")} // Only change: added onClick
             sx={{
               transition: "all 0.3s ease",
               "&:hover": {
@@ -52,6 +56,7 @@ function Navbar() {
           </Button>
           <Button
             color="inherit"
+            onClick={() => navigate("/login")} // Only change: added onClick
             sx={{
               transition: "all 0.3s ease",
               "&:hover": {
