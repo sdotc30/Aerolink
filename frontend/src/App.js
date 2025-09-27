@@ -6,6 +6,7 @@ import HeroSection from "./components/HeroSection";
 import HowItWorks from "./components/HowItWorks";
 import StatsSection from "./components/StatsSection";
 import LoginPage from "./components/Auth/LoginPage";
+import ProfileDashboard from "./components/profile/ProfileDashboard";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           {/* Login and Register Routes - Same Component */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<LoginPage />} />
+
+          {/* Profile Dashboard Route */}
+          <Route path="/profile" element={<ProfileDashboard />} />
         </Routes>
       </div>
     </BrowserRouter>

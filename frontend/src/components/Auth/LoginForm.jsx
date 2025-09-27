@@ -9,8 +9,10 @@ import {
   InputAdornment,
   ThemeProvider,
   createTheme,
+  Alert,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 // Theme for red asterisks
 const redAsteriskTheme = createTheme({
@@ -18,7 +20,7 @@ const redAsteriskTheme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         asterisk: {
-          color: "#d32f2f", // Red color for asterisks
+          color: "#d32f2f",
         },
       },
     },
@@ -27,15 +29,52 @@ const redAsteriskTheme = createTheme({
 
 const LoginForm = ({ onToggleForm }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login submitted:", formData);
-    // Add login logic here
+    setLoading(true);
+    setError("");
+
+    try {
+      console.log("Login submitted:", formData);
+
+      // Mock authentication check
+      if (formData.email && formData.password) {
+        // Simulate successful login
+        setTimeout(() => {
+          // Store user session (mock)
+          localStorage.setItem(
+            "aerolink_user",
+            JSON.stringify({
+              name: "Alex Thompson",
+              email: formData.email,
+              verified: true,
+              rating: 4.8,
+              totalListings: 12,
+              activeListings: 3,
+              loginTime: new Date().toISOString(),
+            })
+          );
+
+          // Navigate to profile dashboard
+          navigate("/profile");
+          setLoading(false);
+        }, 1200); // Slightly longer for better perceived performance
+      } else {
+        setError("Please enter both email and password");
+        setLoading(false);
+      }
+    } catch (err) {
+      setError("Login failed. Please try again.");
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -43,6 +82,8 @@ const LoginForm = ({ onToggleForm }) => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    // Clear error when user starts typing
+    if (error) setError("");
   };
 
   return (
@@ -83,6 +124,13 @@ const LoginForm = ({ onToggleForm }) => {
           Welcome back, traveler!
         </Typography>
 
+        {/* Error Alert */}
+        {error && (
+          <Alert severity="error" sx={{ width: "100%", mb: 1 }}>
+            {error}
+          </Alert>
+        )}
+
         {/* Email Field */}
         <TextField
           fullWidth
@@ -93,6 +141,7 @@ const LoginForm = ({ onToggleForm }) => {
           value={formData.email}
           onChange={handleChange}
           required
+          disabled={loading}
           sx={{
             "& .MuiOutlinedInput-root": {
               backgroundColor: "rgba(255, 255, 255, 0.8)",
@@ -114,6 +163,7 @@ const LoginForm = ({ onToggleForm }) => {
           value={formData.password}
           onChange={handleChange}
           required
+          disabled={loading}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -121,6 +171,7 @@ const LoginForm = ({ onToggleForm }) => {
                   onClick={() => setShowPassword(!showPassword)}
                   edge="end"
                   aria-label="toggle password visibility"
+                  disabled={loading}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
@@ -143,6 +194,7 @@ const LoginForm = ({ onToggleForm }) => {
           type="submit"
           fullWidth
           variant="contained"
+          disabled={loading}
           sx={{
             backgroundColor: "#0077B6",
             py: 1.5,
@@ -153,12 +205,15 @@ const LoginForm = ({ onToggleForm }) => {
             mt: 1,
             "&:hover": {
               backgroundColor: "#00B4D8",
-              transform: "translateY(-1px)",
+              transform: loading ? "none" : "translateY(-1px)",
+            },
+            "&:disabled": {
+              backgroundColor: "rgba(0, 119, 182, 0.6)",
             },
             transition: "all 0.3s ease",
           }}
         >
-          Sign In
+          {loading ? "Signing In..." : "Sign In"}
         </Button>
 
         {/* Forgot Password */}
